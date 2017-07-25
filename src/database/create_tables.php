@@ -40,4 +40,15 @@ $sql = "CREATE TABLE 'Tweet'(
     )";
 
 
-//
+// Table Comment
+
+$sql = "CREATE TABLE 'Comment'(
+    id INT NOT NULL AUTO_INCREMENT,
+    userId INT NOT NULL,
+    postId INT NOT NULL,
+    text varchar(140) NOT NULL,
+    creationDate DATE NOT NULL,
+    PRIMARY KEY id,
+    FOREIGN KEY (id) REFERENCES Users(id),
+    FOREIGN KEY (id) REFERENCES Tweet (id),
+    )";
