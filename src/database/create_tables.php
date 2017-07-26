@@ -59,10 +59,11 @@ $sql = "CREATE TABLE 'Message'(
     id INT NOT NULL AUTO_INCREMENT,
     text varchar(140) NOT NULL,
     creationDate DATE NOT NULL,
+    MessageRead INT NOT NULL,
     SenderId INT NOT NULL,
     ReceiverId INT NOT NULL,
     PRIMARY KEY id,
-    FOREIGN KEY (Senderid) REFERENCES Users(id),
+    FOREIsGN KEY (Senderid) REFERENCES Users(id),
     FOREIGN KEY (Receiverid) REFERENCES Users(id),
     )";
       
