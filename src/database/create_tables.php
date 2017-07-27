@@ -11,14 +11,14 @@ $connect = new mysqli($servername, $username, $basename, $password);
 
 //tworze Tabele Users
 
-$sql = "CREATE TABLE 'Users' (
+$sqlUsers = "CREATE TABLE 'Users' (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL UNIQUE,
     username VARCHAR(255) NOT NULL UNIQUE,
     hashed_password VARCHAR (255) NOT NULL,
         )";
 
-$result = $connect->query($sql);
+$result = $connect->query($sqlUsers);
 if($result === TRUE){
     echo ("Tabela Users została stworzona");
 }
@@ -30,7 +30,7 @@ echo "<br>";
 
 //Tabela Tweet 
 
-$sql = "CREATE TABLE 'Tweet'(
+$sqlTweet = "CREATE TABLE 'Tweet'(
     id INT NOT NULL AUTO_INCREMENT,
     userId INT NOT NULL,
     text varchar(140) NOT NULL,
@@ -42,7 +42,7 @@ $sql = "CREATE TABLE 'Tweet'(
 
 // Table Comment
 
-$sql = "CREATE TABLE 'Comment'(
+$sqlComment = "CREATE TABLE 'Comment'(
     id INT NOT NULL AUTO_INCREMENT,
     userId INT NOT NULL,
     postId INT NOT NULL,
@@ -55,7 +55,7 @@ $sql = "CREATE TABLE 'Comment'(
 
 //Table Message
 
-$sql = "CREATE TABLE 'Message'(
+$sqlMessage = "CREATE TABLE 'Message'(
     id INT NOT NULL AUTO_INCREMENT,
     text varchar(140) NOT NULL,
     creationDate DATE NOT NULL,
