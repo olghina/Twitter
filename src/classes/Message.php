@@ -76,7 +76,7 @@ class Message {
     }
 
     static public function loadMessageBySenderId($senderId, mysqli $connection) {
-        $sql = 'SELECT * FROM Messages WHERE senderId = ' . $senderId;
+        $sql = 'SELECT * FROM Messages WHERE senderId = '.$senderId;
         $result = $connection->query($sql);
 
         if ($result == true && $result->num_rows === 1) {
@@ -89,22 +89,20 @@ class Message {
             return null;
         }
     }
-
-    static public function loadAllMessagesBySenderId($senderId, mysqli $connection) {
-        $sql = "SELECT * FROM Comments WHERE PostId = '$PostId'";
+static public function loadMessageByReceiverId($receiverId, mysqli $connection) {
+        $sql = 'SELECT * FROM Messages WHERE receiverId = '.$receiverId;
         $result = $connection->query($sql);
-        $comments = [];
-        if ($result == true && $result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $loadedComment = new Comment();
-                $loadedComment->id = $row['id'];
-                $loadedComment->userId = $row['userId'];
-                $loadedComment->text = $row['text'];
-                $loadedComment->creationDate = $row['creationDate'];
-                $loadedComment->userId = $row['PostId'];
-                $comments[] = $loadedComment;
-            }
+
+        if ($result == true && $result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+            $loadedMessage = new Message();
+            $loadedMessage->assignValues($row['id'], $row['messageRead'], $row['text'], $row['creationDate'], $row['senderId'],$row['receiverId'] );
+
+            return $loadedMessage;
+        } else {
+            return null;
         }
-        return $comments;
+    }
+    
     }
     
