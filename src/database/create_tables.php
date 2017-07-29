@@ -2,12 +2,18 @@
 // na poczatku lacze sie z baza danych Twitter 
 $servername = "localhost";
 $username = "root";
-$basename = 'Twitter';
-$password = '';
+$password = "coderslab";
 
 //łacze sie z baza danych
-$connect = new mysqli($servername, $username, $basename, $password);
+$connect = new mysqli($servername, $username, $password);
 
+//sprawdzam czy polaczenie sie udalo
+if ($connect->connect_error){
+    die('połączenie z bazą danych nie udało się');
+}
+else {
+    echo "połącznie z bazą danych udane";
+}
 
 //tworze Tabele Users
 
@@ -39,6 +45,14 @@ $sqlTweet = "CREATE TABLE 'Tweet'(
     FOREIGN KEY (id) REFERENCES Users(id)
     )";
 
+$result1 = $connect->query($sqlTweet);
+if($result1 === TRUE){
+    echo ("Tabela Tweet została stworzona");
+}
+else{
+    ("Błąd podczas tworzenia tabeli Tweet!" . "<br>" . $connect->error);
+}
+echo "<br>";
 
 // Table Comment
 
@@ -52,6 +66,14 @@ $sqlComment = "CREATE TABLE 'Comment'(
     FOREIGN KEY (id) REFERENCES Users(id),
     FOREIGN KEY (id) REFERENCES Tweet (id),
     )";
+$result2 = $connect->query($sqlComment);
+if($result2 === TRUE){
+    echo ("Tabela Comment została stworzona");
+}
+else{
+    ("Błąd podczas tworzenia tabeli Comment!" . "<br>" . $connect->error);
+}
+echo "<br>";
 
 //Table Message
 
@@ -66,4 +88,12 @@ $sqlMessage = "CREATE TABLE 'Message'(
     FOREIsGN KEY (Senderid) REFERENCES Users(id),
     FOREIGN KEY (Receiverid) REFERENCES Users(id),
     )";
-      
+ 
+$result3 = $connect->query($sqlMessage);
+if($result3 === TRUE){
+    echo ("Tabela Message została stworzona");
+}
+else{
+    ("Błąd podczas tworzenia tabeli Message!" . "<br>" . $connect->error);
+}
+echo "<br>";

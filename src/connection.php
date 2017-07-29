@@ -5,7 +5,7 @@
 $servername = "localhost";
 $username = "root";
 $basename = 'Twitter';
-$password = '';
+$password = 'coderslab';
 
 //łacze sie z baza danych
 $connect = new mysqli($servername, $username, $basename, $password);

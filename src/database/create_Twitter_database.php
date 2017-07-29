@@ -2,11 +2,10 @@
 
 $servername = "localhost";
 $username = "root";
-$basename = '';
-$password = '';
+$password = 'coderslab';
 
 //łacze sie z baza danych
-$connect = new mysqli($servername, $username, $basename, $password);
+$connect = new mysqli($servername, $username, $password);
 
 //sprawdzam czy polaczenie sie udalo
 if ($connect->connect_error){
