@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../src/connection.php';
+require_once '../connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
     $username = trim($_POST['email']);
@@ -29,9 +29,9 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 <html lang="en">
     <form>
 
-        <label for = "email">Username:</label>
+        <label for = "email">e-mail:</label>
 
-        <input type = "text" name = "email" id = "Username"
+        <input type = "text" name = "email" id = "e-mail"
 
                placeholder = "Please provide your e-mail">
 
