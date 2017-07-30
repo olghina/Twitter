@@ -50,14 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['newTweet']) && strlen(
                 $tweet->getText();
             }
 
-            //viewing comments to this tweet
-            $comments = Comment::loadAllCommentsByPostId($PostId, $connection);
-           $authorComment = User::loadUserById($id, $conn);
-                   
-                   
-            echo ' Author of the comment:' . $authorComment->getUsername() . '<br>';
-            echo ' Posted: ' . $comments->getCreationDate() . "<br>";
-            echo ' Content:' . $comments->getText() . "<br><br>";
             ?>
 
         </div>
