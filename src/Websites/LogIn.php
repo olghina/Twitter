@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../connection.php';
+require_once '../src/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email']) && isset($_POST['password'])) {
     $username = trim($_POST['email']);
@@ -16,7 +16,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
         $hashed_password = $row['hashed_password'];
         $checkPassword = password_verify($password, $hashed_password);
         if ($checkPassword) {
-            $_SESSION['id'] = $row['id'];
+            $_SESSION['Userid'] = $row['id'];
             //header("Location: ../tbd");
         }
     }

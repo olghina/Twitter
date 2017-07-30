@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../connection.php';
+require_once '../src/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])) {
     $username = trim($_POST['username']);

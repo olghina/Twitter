@@ -122,3 +122,11 @@ class User {
     }
 
 }
+
+$obj = new User();
+$obj->setEmail('olgix89@gmail.com');
+$obj->setUsername('olghina');
+var_dump($obj);
+
+
+
